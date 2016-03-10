@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-22.0.0_9fd2c363b2c7e29c69742d2e4761089d9c9d26de.jar" />
+    </item>
+    <item
+        jar="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0_1b07e82c31689d80618f04db54daf0ef2ba3c57a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-22.0.0_65fe01aacdc6f84a857a2cf9ced29b4cf785f067.jar" />
+    </item>
+    <item
+        jar="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\libs\GraphView-4.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="20768335ab718b2a912f9155f9d1893d5fc931ce">
+        <dex dex="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\pre-dexed\debug\GraphView-4.0.0_fb13721dda0e579fd7fabd82434751a49463a090.jar" />
+    </item>
+    <item
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\Users\Norawit Jittipairoj\Documents\GitHub\AndroidProgram\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0_036d4f6abf1af3a69bdd91c577da918ead884ec2.jar" />
+    </item>
+
+</items>
