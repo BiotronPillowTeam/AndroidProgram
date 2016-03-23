@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="SoundBar" type="id">soundbar</item>
+    <item name="LightBar" type="id">lightbar</item>
+    <item name="SoundText" type="id">soundtext</item>
+    <item name="LowButton" type="id">lowbutton</item>
+    <item name="VibrationText" type="id">vibrationtext</item>
+    <item name="MediumButton" type="id">mediumbutton</item>
+    <item name="HighButton" type="id">highbutton</item>
+    <item name="OffButton" type="id">offbutton</item>
+</resources>
