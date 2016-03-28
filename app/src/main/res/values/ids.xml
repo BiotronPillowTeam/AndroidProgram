@@ -8,4 +8,8 @@
     <item name="MediumButton" type="id">mediumbutton</item>
     <item name="HighButton" type="id">highbutton</item>
     <item name="OffButton" type="id">offbutton</item>
+    <item name="vibrationButtons" type="id">VibrationButtons</item>
+    <item name="timeButton" type="id">TimeButton</item>
+    <item name="graphButton" type="id">GraphButton</item>
+    <item name="updateButton" type="id">UpdateButton</item>
 </resources>

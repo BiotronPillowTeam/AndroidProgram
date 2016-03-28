@@ -1,7 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -196,44 +196,75 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btid"
-        android:width="165dp"
+        android:width="150dp"
         android:height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="#50587C"
         android:hint="@string/DeviceHint"
+        android:paddingLeft="5dp"
         android:textColorHint="#ffffffff"
         android:textSize="20sp"
         android:textColor="#ffffffff" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="50dp"
         android:text="Connect"
         android:id="@+id/btopen"
-        android:background="#003300"
-        android:width="100dp"
-        android:height="50dp"
+        android:background="#ff50a8ab"
+        android:layout_marginLeft="5dp"
         android:textColor="#ffffffff"
         android:textStyle="bold"
-        android:layout_above="@+id/textView8"
-        android:layout_toRightOf="@+id/btid" />
+        android:layout_toRightOf="@+id/btid"
+        />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
         android:text="Disconnect"
         android:id="@+id/btclose"
-        android:width="100dp"
-        android:height="50dp"
-        android:background="#003300"
+        android:layout_marginLeft="5dp"
+        android:background="#ff50a8ab"
         android:textStyle="bold"
         android:textColor="#ffffffff"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/btopen"
-        android:layout_toEndOf="@+id/btopen" />
+        android:layout_toRightOf="@id/btopen"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Settings"
+        android:id="@id/timeButton"
+        android:layout_below="@id/btid"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffffff"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Graph"
+        android:id="@id/graphButton"
+        android:layout_toRightOf="@id/timeButton"
+        android:layout_below="@id/btid"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffffff"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -242,7 +273,7 @@
         android:id="@+id/textView8"
         android:textColor="#ffffffff"
         android:textSize="25dp"
-        android:layout_below="@+id/btid"
+        android:layout_below="@+id/timeButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="21dp" />
@@ -280,16 +311,16 @@
         android:layout_below="@id/LightBar"
         />
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/VibrationText">
+        android:layout_below="@id/VibrationText"
+        android:id="@id/vibrationButtons">
         <Button
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:text="Off"
-            android:id="@id/OffButton"
-
+            android:id="@+id/OffButton"
             android:onClick="onClickVibBtn"
             android:background="#ff50a8ab"
             android:textColor="#ffffffff"
@@ -298,51 +329,58 @@
             />
         <Button
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:text="Low"
-            android:id="@id/LowButton"
-
+            android:id="@+id/LowButton"
             android:onClick="onClickVibBtn"
             android:background="#ff50a8ab"
+            android:layout_marginLeft="5dp"
             android:textColor="#ffffffff"
             android:textStyle="bold" />
         <Button
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:text="Medium"
             android:id="@id/MediumButton"
-
+            android:layout_marginLeft="5dp"
             android:onClick="onClickVibBtn"
             android:background="#ff50a8ab"
-            android:layout_below="@+id/btopen"
-            android:layout_alignLeft="@+id/btopen"
-            android:layout_alignStart="@+id/btopen"
             android:textColor="#ffffffff"
             android:textStyle="bold" />
         <Button
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="High"
             android:id="@id/HighButton"
-
             android:onClick="onClickVibBtn"
             android:background="#ff50a8ab"
-            android:layout_below="@+id/btopen"
-            android:layout_alignLeft="@+id/btopen"
-            android:layout_alignStart="@+id/btopen"
             android:textColor="#ffffffff"
             android:textStyle="bold" />
 
-
     </GridLayout>
 
-
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Settings"
+        android:id="@id/updateButton"
+        android:layout_below="@id/vibrationButtons"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffffff"
+        android:layout_marginRight="0dp"
+        android:layout_alignParentRight="true"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
 
 
 </RelativeLayout>
 
-</LinearLayout>
