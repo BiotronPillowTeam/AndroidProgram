@@ -73,9 +73,9 @@ public class GraphActivity extends ActionBarActivity {
         try{
         String cmd="GD";
         try {
-            MainActivity.sendData(cmd);
+            MainActivity.sendData(cmd,this);
         } catch(IOException ex) {
-            MainActivity.beginListenForData();
+            MainActivity.beginListenForData(this);
         }}catch(Exception ex2){}
     }
 

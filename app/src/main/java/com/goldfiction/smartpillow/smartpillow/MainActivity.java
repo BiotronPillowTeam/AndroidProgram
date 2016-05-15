@@ -2,6 +2,7 @@ package com.goldfiction.smartpillow.smartpillow;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,10 +17,10 @@ import java.util.UUID;
 
 
 public class MainActivity extends ActionBarActivity {
-    EditText lightText;
-    EditText soundText;
-    EditText viberationText;
-    static EditText logText;
+    //EditText lightText;
+//    EditText soundText;
+//    EditText viberationText;
+//    static EditText logText;
     EditText btidText;
 
     static BluetoothAdapter mBluetoothAdapter;
@@ -32,23 +33,84 @@ public class MainActivity extends ActionBarActivity {
     static int readBufferPosition;
     int counter;
     static volatile boolean stopWorker;
-
+    TextView lightText;
+    TextView soundText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lightText=(EditText)this.findViewById(R.id.lighttext);
-        soundText=(EditText)this.findViewById(R.id.soundtext);
-        viberationText=(EditText)this.findViewById(R.id.viberationtext);
-        logText=(EditText)this.findViewById(R.id.logtext);
+        //lightText=(EditText)this.findViewById(R.id.lighttext);
+        //soundText=(EditText)this.findViewById(R.id.soundtext);
+       // viberationText=(EditText)this.findViewById(R.id.viberationtext);
+        //logText=(EditText)this.findViewById(R.id.logtext);
         btidText=(EditText)this.findViewById(R.id.btid);
+
+
+        // LIGHT SEEKBAR STUFF:
+        SeekBar lightBar = (SeekBar) findViewById(R.id.LightBar);
+        int lightProgress = lightBar.getProgress();
+
+        lightText = (TextView) findViewById(R.id.lightText);
+
+        String light_msg = "Light: "+ String.valueOf(lightProgress);
+        lightText.setText(light_msg);
+
+
+        lightBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                String text = "Light: "+ String.valueOf(progress);
+                lightText.setText(text);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+        //SOUND SEEKBAR STUFF:
+
+        SeekBar soundBar = (SeekBar) findViewById(R.id.SoundBar);
+        soundText = (TextView) findViewById(R.id.soundText);
+
+        int soundProgress = soundBar.getProgress();
+
+        String sound_msg = "Sound: "+ String.valueOf(soundProgress);
+
+        soundText.setText(sound_msg);
+
+        soundBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                String sound_msg = "Sound: "+ String.valueOf(progress);
+                soundText.setText(sound_msg);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
 
 
         Button openButton = (Button)findViewById(R.id.btopen);
         Button closeButton = (Button)findViewById(R.id.btclose);
-        Button graphButton = (Button)findViewById(R.id.open_graph_activity);
+        Button graphButton = (Button)findViewById(R.id.graphButton);
         //Open Button
         openButton.setOnClickListener(new View.OnClickListener()
         {
@@ -86,72 +148,91 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+//    public void onClickLightBtn(View v){
+//        String msg="Light Set to "+lightText.getText().toString();
+//        String cmd="L|"+lightText.getText().toString();
+//        log(msg);
+//        try
+//        {
+//            sendData(cmd);
+//        }
+//        catch (IOException ex) { }    }
+//    public void onClickSoundBtn(View v){
+//        String msg="Sound Set to "+soundText.getText().toString();
+//        String cmd="S|"+soundText.getText().toString();
+//        log(msg);
+//        try
+//        {
+//            sendData(cmd);
+//        }
+//        catch (IOException ex) { }    }
+
+    public void onClickVibBtn(View v, String vibrationStrength){
+        String msg = "Vibration set to: "+vibrationStrength;
+        String cmd = "V|"+vibrationStrength;
+        //log(msg);
+//        try {
+//            sendData(cmd);
+//        }
+//        catch (IOException error){}
+
+        Toast.makeText(this, msg,Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void onClickLowVibBtn(View view){
+        onClickVibBtn(view, "10");
     }
 
-    public void onClickLightBtn(View v){
-        String msg="Light Set to "+lightText.getText().toString();
-        String cmd="L|"+lightText.getText().toString();
-        log(msg);
-        try
-        {
-            sendData(cmd);
-        }
-        catch (IOException ex) { }    }
-    public void onClickSoundBtn(View v){
-        String msg="Sound Set to "+soundText.getText().toString();
-        String cmd="S|"+soundText.getText().toString();
-        log(msg);
-        try
-        {
-            sendData(cmd);
-        }
-        catch (IOException ex) { }    }
-    public void onClickVibBtn(View v){
-        String msg="Viberation Set to " + viberationText.getText().toString();
-        String cmd="V|"+viberationText.getText().toString();
-        log(msg);
-        try
-        {
-            sendData(cmd);
-        }
-        catch (IOException ex) { }
+    public void onClickOffVibBtn(View view){
+        onClickVibBtn(view, "0");
+
+    }
+    public void onClickHighVibBtn(View view){
+        onClickVibBtn(view,"30");
+
+    }
+    public void onClickMedVibBtn (View view){
+        onClickVibBtn(view,"20");
     }
 
 
 
-    public static String log="";
-    public static String log(String in){
-        log+=in+"\r\n";
-        logText.setText(log);
-        return log;
-    }
+//    public static String log="";
+//    public static String log(String in){
+//        log+=in+"\r\n";
+//        logText.setText(log);
+//        return log;
+//    }
 
     void findBT()
     {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null)
         {
-            log("No bluetooth adapter available");
+            String msg = ("No bluetooth adapter available");
+            Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
         }
 
         if(!mBluetoothAdapter.isEnabled())
@@ -172,7 +253,8 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         }
-        log("Bluetooth Device Found");
+        String msg = ("Bluetooth Device Found");
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
     void openBT() throws IOException
@@ -183,12 +265,13 @@ public class MainActivity extends ActionBarActivity {
         mmOutputStream = mmSocket.getOutputStream();
         mmInputStream = mmSocket.getInputStream();
 
-        beginListenForData();
+        beginListenForData(this);
 
-        log("Bluetooth Opened");
+        String msg = ("Bluetooth Opened");
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
-    public static void beginListenForData()
+    public static void beginListenForData(final Context context)
     {
         final Handler handler = new Handler();
         final byte delimiter = 10; //This is the ASCII code for a newline character
@@ -223,7 +306,8 @@ public class MainActivity extends ActionBarActivity {
                                     {
                                         public void run()
                                         {
-                                            log(data);
+                                            String msg = (data);
+                                            Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
                                             String[] datatmp=data.split("|");
                                             if(datatmp[0]=="Pdata")
                                             {
@@ -254,21 +338,21 @@ public class MainActivity extends ActionBarActivity {
         workerThread.start();
     }
 
-    public static void sendData(String msgin) throws IOException
+    public static void sendData(String msgin, Context context) throws IOException
     {
         String msg = msgin;
         msg += "\n";
         mmOutputStream.write(msg.getBytes());
-        log("Data Sent");
+        Toast.makeText(context,"Data Sent",Toast.LENGTH_SHORT).show();
     }
 
-    public static void closeBT() throws IOException
+    public void closeBT() throws IOException
     {
         stopWorker = true;
         mmOutputStream.close();
         mmInputStream.close();
         mmSocket.close();
-        log("Bluetooth Closed");
+        Toast.makeText(this,"Bluetooth Closed",Toast.LENGTH_SHORT).show();
     }
 
 
